@@ -1,3 +1,4 @@
+export dbimage
 using PyPlot
 function dbimage(z; x=nothing, y=nothing, dbrange=50, cmap="inferno",
   interpolation="None", aspect="auto")
