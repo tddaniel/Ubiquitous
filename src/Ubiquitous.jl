@@ -1,7 +1,7 @@
 module Ubiquitous
 
 # package code goes here
-include("dbimage.jl")
-include("meshgrid.jl")
+include("plotting.jl")
+include("misc.jl")
 
 end # module
