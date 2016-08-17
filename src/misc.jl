@@ -1,7 +1,26 @@
-export meshgrid, save_data, time_stamp, convert_image
+export meshgrid, save_data, time_stamp, convert_image, normalize!
 
 using HDF5
 using Images
+@inline function __normalize!(v::AbstractVector, nrm::AbstractFloat)
+    #The largest positive floating point number whose inverse is less than
+    #infinity
+    δ = inv(prevfloat(typemax(nrm)))
+    if nrm ≥ δ #Safe to multiply with inverse
+        invnrm = inv(nrm)
+        scale!(v, invnrm)
+    else # scale elements to avoid overflow
+        εδ = eps(one(nrm))/δ
+        scale!(v, εδ)
+        scale!(v, inv(nrm*εδ))
+    end
+    v
+end
+
+function normalize!(v::AbstractVector, p::Real=2)
+    nrm = norm(v, p)
+    __normalize!(v, nrm)
+end
 
 function convert_image(file_name)
   img = load(file_name)
