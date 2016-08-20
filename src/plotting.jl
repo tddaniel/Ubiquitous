@@ -13,11 +13,11 @@ function dbimage(z; x=nothing, y=nothing, dbrange=50, cmap="inferno",
    end
    if (x ≠ nothing) && (y ≠ nothing)
       imshow(dbz, aspect=aspect, cmap=cmap,
-                 extent=(x[0], x[-1], y[0],y[-1]),
+                 extent=[x[1], x[end], y[1],y[end]],
                  vmin=vmin, vmax=vmax,
-                 interpolation=interpolation)
+                 interpolation=interpolation, origin="lower")
    else
       imshow(dbz, aspect=aspect, cmap=cmap, interpolation=interpolation,
-                 vmin=vmin, vmax=vmax)
+                 vmin=vmin, vmax=vmax, origin="lower")
    end
  end
