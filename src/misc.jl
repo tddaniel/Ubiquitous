@@ -18,8 +18,8 @@ function time_stamp()
   file_name = string(DateTime(now()))[1:end-3]
   file_name = replace(file_name, ":", "")
   file_name = split(file_name, "T")
-  temp1 = convert(ASCIIString, file_name[1])
-  temp2 = convert(ASCIIString, file_name[2][1:end-3])
+  temp1 = convert(String, file_name[1])
+  temp2 = convert(String, file_name[2][1:end-3])
   [temp1, temp2]
 
 end
