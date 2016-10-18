@@ -1,4 +1,4 @@
-export meshgrid, save_data, time_stamp, convert_image, normalize!
+export meshgrid, save_data, time_stamp, convert_image
 
 using HDF5
 using Images
