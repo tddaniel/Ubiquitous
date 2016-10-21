@@ -7,6 +7,7 @@ function dbimage(z; x=nothing, y=nothing, dbrange=50, cmap="inferno",
    if dbrange ≠ nothing
        vmin = maximum(dbz)-dbrange
        vmax = maximum(dbz)
+       dbz[dbz .< vmin] = vmin
    else
        vmin = nothing
        vmax = nothing
