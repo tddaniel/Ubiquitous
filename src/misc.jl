@@ -8,9 +8,9 @@ function convert_image(file_name)
   image = reinterpret(UInt8, img.data)
   test = zeros(size(image)[3], size(image)[2], size(image)[1])
 
-  test[:, :, 1] = squeeze(image[1, :, :], 1).'
-  test[:, :, 2] = squeeze(image[2, :, :], 1).'
-  test[:, :, 3] = squeeze(image[3, :, :], 1).'
+  test[:, :, 1] = image[1, :, :].'
+  test[:, :, 2] = image[2, :, :].'
+  test[:, :, 3] = image[3, :, :].'
   return test
 end
 
